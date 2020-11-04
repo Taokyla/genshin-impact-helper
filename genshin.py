@@ -147,6 +147,10 @@ class Sign(object):
 
     return jdict
 
+def notify(ftkey:str,message:str):
+  url = "http://sc.ftqq.com/{}.send?text=原神签到&desp=" + message
+  notifyResult = requests.get(url.format(ftkey))
+  return json.loads(notifyResult.text)
 
 def makeResult(result:str, data=None):
   return json.dumps(
